@@ -1,0 +1,3 @@
+For some reason 'pytest' would not work for this program.
+I mamanged to figure out that 'python -m pytest' worked.
+Due to the difficulties of that I'd say it was a 6/10.

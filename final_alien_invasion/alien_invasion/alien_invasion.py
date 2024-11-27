@@ -12,6 +12,7 @@ from bullet import Bullet
 from alien import Alien
 from background import Background
 
+
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
 
@@ -20,12 +21,15 @@ class AlienInvasion:
         pygame.init()
         self.clock = pygame.time.Clock()
         self.settings = Settings()
-        self.background = Background(self)
 
+        # Initialize the screen before creating the background
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height)
         )
         pygame.display.set_caption("Alien Invasion")
+
+        # Initialize the background HERE so self screen initialized before screen
+        self.background = Background(self)
 
         # Create an instance to store game statistics.
         #   and create a scoreboard.
@@ -242,7 +246,8 @@ class AlienInvasion:
 
     def _update_screen(self):
          """Update images on the screen, and flip to the new screen."""
-         self.screen.fill(self.settings.bg_color)
+         # self.screen.fill(self.settings.bg_color)
+         self.background.blitme()
          for bullet in self.bullets.sprites():
              bullet.draw_bullet()
          self.ship.blitme()
